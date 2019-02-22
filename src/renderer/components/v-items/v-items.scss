@@ -1,0 +1,9 @@
+.v-items {
+  border-top: 1px solid #eee;
+}
+
+.dark-mode {
+  .v-items {
+    border-top-color: #333;
+  }
+}

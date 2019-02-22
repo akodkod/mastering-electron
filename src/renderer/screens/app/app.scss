@@ -1,0 +1,41 @@
+@import "~ant-design-vue/dist/antd.css";
+
+html, body, .app {
+  height: 100%;
+}
+
+.app {
+  padding: 0 15px 30px;
+
+  &--drag-area {
+    height: 30px;
+  }
+
+  .drag-area {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+  }
+
+  &.dark-mode {
+    color: #fff;
+    background: #252628;
+
+    h1, h2, h3, h4, h5, h6, p, label {
+      color: #fff;
+    }
+
+    input {
+      background: #333;
+      border-color: #222;
+    }
+
+    .ant-select {
+      color: #fff;
+
+      &-selection {
+        background: #333;
+        border-color: #222;
+      }
+    }
+  }
+}

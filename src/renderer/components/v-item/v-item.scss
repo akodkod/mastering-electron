@@ -1,0 +1,23 @@
+.v-item {
+  padding: 1rem 0.6rem;
+  border-bottom: 1px solid #eee;
+
+  &--text {
+    span {
+      color: #ccc;
+      font-size: 80%;
+      font-style: italic;
+    }
+  }
+
+  &.done &--text {
+    color: #ccc;
+    text-decoration: line-through;
+  }
+}
+
+.dark-mode {
+  .v-item {
+    border-bottom-color: #333;
+  }
+}
