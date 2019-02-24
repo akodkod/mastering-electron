@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="main--title drag-area">
-      <h1>NEW Doist</h1>
+      <h1>Doist</h1>
     </div>
 
     <v-add-item v-on:add="add" />

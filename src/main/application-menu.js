@@ -1,5 +1,7 @@
 import { app, Menu } from "electron"
+
 import store from "../store"
+import { checkForUpdates } from "./auto-updater"
 
 export function createApplicationMenu() {
   let template = []
@@ -9,6 +11,7 @@ export function createApplicationMenu() {
       label: app.getName(),
       submenu: [
         { role: "about" },
+        { label: "Check for Updates", click: () => checkForUpdates() },
         { type: "separator" },
         { role: "services" },
         { type: "separator" },
