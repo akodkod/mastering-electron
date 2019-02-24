@@ -8,8 +8,10 @@ import { registerGlobalShortcuts } from "./global-shortcuts"
 import { createTrayIcon } from "./tray"
 import { createApplicationMenu } from "./application-menu"
 import { createContextMenu } from "./context-menu"
+import { checkForUpdates } from "./auto-updater"
 
 app.on("ready", () => {
+  checkForUpdates()
   subscribeOnApperanceChanges()
   registerBackgroundWorker()
   registerGlobalShortcuts()

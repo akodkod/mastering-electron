@@ -25,7 +25,7 @@
     "postinstall": "electron-builder install-app-deps",
     "pack": "yarn build:prod && electron-builder --dir",
     "dist": "yarn build:prod && electron-builder",
-    "release": "yarn build:prod && electron-builder --relsase always"
+    "release": "yarn build:prod && electron-builder --publish always"
   },
   "build": {
     "appId": "io.iamdev.MasteringElectron",
