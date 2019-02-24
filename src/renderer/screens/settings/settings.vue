@@ -10,6 +10,10 @@
           <a-select-option value="light" selected>Light</a-select-option>
           <a-select-option value="dark">Dark</a-select-option>
         </a-select>
+
+        <a-checkbox v-bind:checked="settings.automaticallyChangeTheme" v-on:change="updateAutomaticallyChangeTheme">
+          Automatically change theme
+        </a-checkbox>
       </a-form-item>
     </a-form>
   </div>

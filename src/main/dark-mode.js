@@ -2,6 +2,8 @@ import { systemPreferences } from "electron"
 import store from "../store"
 
 export function subscribeOnApperanceChanges() {
+  if (!store.state.settings.automaticallyChangeTheme) return
+
   updateTheme()
   systemPreferences.subscribeNotification("AppleInterfaceThemeChangedNotification", updateTheme)
 }

@@ -4,10 +4,18 @@ import { showWindow } from "./windows"
 import "../store"
 import { subscribeOnApperanceChanges } from "./dark-mode"
 import { registerBackgroundWorker } from "./background-worker"
+import { registerGlobalShortcuts } from "./global-shortcuts"
+import { createTrayIcon } from "./tray"
+import { createApplicationMenu } from "./application-menu"
+import { createContextMenu } from "./context-menu"
 
 app.on("ready", () => {
   subscribeOnApperanceChanges()
   registerBackgroundWorker()
+  registerGlobalShortcuts()
+  createTrayIcon()
+  createApplicationMenu()
+  createContextMenu()
 
   showWindow("main")
 

@@ -12,14 +12,15 @@ export default {
   },
 
   methods: {
-    ...mapActions(["markItemAsDone", "unmarkItemAsDone"]),
+    ...mapActions(["updateItem"]),
 
-    done() {
-      this.markItemAsDone(this.item.id)
-    },
+    toggleDone() {
+      let done = !this.item.done
 
-    undo() {
-      this.unmarkItemAsDone(this.item.id)
+      this.updateItem({
+        id: this.item.id,
+        attributes: { done }
+      })
     }
   }
 }

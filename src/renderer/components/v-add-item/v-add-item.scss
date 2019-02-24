@@ -1,3 +1,9 @@
 .v-add-item {
   padding: 0 0 1rem;
+
+  &--clipboard {
+    color: #ccc;
+    font-size: 80%;
+    padding: 0 0.2rem;
+  }
 }

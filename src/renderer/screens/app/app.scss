@@ -24,7 +24,25 @@ html, body, .app {
       color: #fff;
     }
 
+    .ant-checkbox-inner {
+      background: #333;
+      border-color: #222;
+    }
+
+    .ant-checkbox-checked {
+      .ant-checkbox-inner {
+        background-color: #1890ff;
+      }
+    }
+
+    .ant-btn-default {
+      color: #fff;
+      background: #333;
+      border-color: #222;
+    }
+
     input {
+      color: #fff;
       background: #333;
       border-color: #222;
     }

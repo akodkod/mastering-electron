@@ -1,3 +1,4 @@
+import _ from "lodash"
 import uuidv4 from "uuid/v4"
 
 export default {
@@ -9,17 +10,31 @@ export default {
     store.commit("addItem", { attributes })
   },
 
-  markItemAsDone(store, itemId) {
-    store.commit("updateItem", {
-      id: itemId,
-      attributes: { done: true }
+  addItems(store, string) {
+    let texts = string.split(/\r?\n/)
+
+    _.each(texts, (originalText) => {
+      let text = _.trim(originalText)
+
+      if (text.length) {
+        store.dispatch("addItem", { text })
+      }
     })
   },
 
-  unmarkItemAsDone(store, itemId) {
-    store.commit("updateItem", {
-      id: itemId,
-      attributes: { done: false }
+  updateItem(store, payload) {
+    store.commit("updateItem", payload)
+  },
+
+  markAllItemsAsDone(store) {
+    let itemsIds = _.map(store.getters.itemsToDo, "id")
+    let attributes = { done: true }
+
+    _.each(itemsIds, (id) => {
+      store.commit("updateItem", {
+        id,
+        attributes
+      })
     })
   },
 
@@ -34,9 +49,19 @@ export default {
     store.commit("deleteItem", { id: itemId })
   },
 
+  deleteAllItems(store) {
+    let itemsIds = _.map(store.state, "id")
+
+    _.each(itemsIds, (id) => {
+      store.commit("deleteItem", { id })
+    })
+  },
+
   deleteDoneItems(store) {
-    store.getters.itemsDone.forEach((item) => {
-      store.commit("deleteItem", { id: item.id })
+    let itemsIds = _.map(store.getters.itemsDone, "id")
+
+    _.each(itemsIds, (id) => {
+      store.commit("deleteItem", { id })
     })
   }
 }

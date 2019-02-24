@@ -2,15 +2,15 @@
   padding: 1rem 0.6rem;
   border-bottom: 1px solid #eee;
 
-  &--text {
-    span {
+  &--checkbox {
+    &--reminder {
       color: #ccc;
       font-size: 80%;
       font-style: italic;
     }
   }
 
-  &.done &--text {
+  &.done &--checkbox {
     color: #ccc;
     text-decoration: line-through;
   }

@@ -3,6 +3,8 @@ import path from "path"
 import deepExtend from "deep-extend"
 import { BrowserWindow } from "electron"
 
+import { createTouchBar } from "./touch-bar"
+
 export const windows = {
   main: null,
   settings: null
@@ -15,6 +17,7 @@ export const windowsParameters = {
     hideOnBlur: false,
     hideOnClose: true,
     openDevTools: true,
+    touchBar: true,
 
     browserWindow: {
       width: 400,
@@ -36,12 +39,13 @@ export const windowsParameters = {
     hideOnBlur: false,
     hideOnClose: false,
     openDevTools: true,
+    touchBar: false,
 
     browserWindow: {
       width: 400,
-      height: 400,
+      height: 200,
       minWidth: 400,
-      minHeight: 400,
+      minHeight: 200,
       show: false,
       backgroundColor: "#fff",
       titleBarStyle: "hiddenInset",
@@ -90,6 +94,11 @@ export function createWindow(name, overrideParameters = {}) {
     window.on("blur", () => {
       window.hide()
     })
+  }
+
+  if (parameters.touchBar && process.platform === "darwin") {
+    let touchBar = createTouchBar()
+    window.setTouchBar(touchBar)
   }
 
   window.on("closed", () => {

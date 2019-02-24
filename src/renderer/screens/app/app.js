@@ -2,7 +2,8 @@ import _ from "lodash"
 import { mapState, mapActions } from "vuex"
 
 const defaultSettings = {
-  theme: "light"
+  theme: "light",
+  automaticallyChangeTheme: true
 }
 
 export default {
@@ -15,7 +16,7 @@ export default {
 
     loadDefaultSettings() {
       _.each(defaultSettings, (value, key) => {
-        if (!this.settings[key]) {
+        if (this.settings[key] === undefined) {
           this.updateSetting({ key, value })
         }
       })

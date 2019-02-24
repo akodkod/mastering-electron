@@ -1,8 +1,10 @@
 {
-  "name": "mastering-electron",
+  "name": "Doist",
+  "description": "It's time to do great things!",
   "version": "1.0.0",
   "main": "./dist/main.js",
   "author": "Andrew Emelianenko <emelianenko.web@gmail.com>",
+  "repository": "https://github.com/MrEmelianenko/mastering-electron",
   "license": "MIT",
   "scripts": {
     "build:dev": "run-s -s build:main:dev build:renderer:dev",
@@ -19,7 +21,25 @@
     "lint:scss": "stylelint src/**/*.scss",
     "lint:fix": "run-s -c -s lint:fix:js lint:fix:scss",
     "lint:fix:js": "eslint . --fix",
-    "lint:fix:scss": "stylelint src/**/*.scss --fix"
+    "lint:fix:scss": "stylelint src/**/*.scss --fix",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "yarn build:prod && electron-builder --dir",
+    "dist": "yarn build:prod && electron-builder",
+    "release": "yarn build:prod && electron-builder --relsase always"
+  },
+  "build": {
+    "appId": "io.iamdev.MasteringElectron",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "files": [
+      "dist/"
+    ],
+    "directories": {
+      "buildResources": "src/resources",
+      "output": "release"
+    },
+    "publish": "github"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -35,7 +55,10 @@
     "css-loader": "^2.1.0",
     "deep-extend": "^0.6.0",
     "electron": "^5.0.0-beta.3",
+    "electron-builder": "^20.38.5",
+    "electron-context-menu": "^0.11.0",
     "electron-devtools-installer": "^2.2.4",
+    "electron-updater": "^4.0.6",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
@@ -48,6 +71,7 @@
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
+    "url-loader": "^1.1.2",
     "uuid": "^3.3.2",
     "vue": "^2.6.6",
     "vue-devtools": "^5.0.0-beta.1",
